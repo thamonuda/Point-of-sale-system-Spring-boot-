@@ -3,6 +3,7 @@ package com.ijse.Couse.Work._3.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import com.ijse.Couse.Work._3.entity.Stock;
 import com.ijse.Couse.Work._3.service.StockService;
 
 @RestController
+@CrossOrigin("*")
 public class StockController {
 
     @Autowired

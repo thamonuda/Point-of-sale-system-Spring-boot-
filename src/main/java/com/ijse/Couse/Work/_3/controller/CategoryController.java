@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.ijse.Couse.Work._3.entity.Category;
 import com.ijse.Couse.Work._3.service.CategoryService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/categories") // Base URL for the category endpoints
 public class CategoryController {
 
@@ -93,16 +95,17 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Successfully created category with ID: " + newId);
     }
 
-    @PutMapping("/{categoryId}")
-public ResponseEntity<?> updateCategory(@PathVariable Long categoryId, @RequestBody Category category) {
-    Category existingCategory = categoryServise.getCategoryById(categoryId);
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
+        // your update logic
+    Category existingCategory = categoryServise.getCategoryById(id);
     if (existingCategory == null) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                             .body("Category with ID " + categoryId + " not found.");
+                             .body(null);
     }
 
     existingCategory.setName(category.getName());  // Update the category fields
-    categoryServise.updateCategory(categoryId, existingCategory);  // Save updates
+    categoryServise.updateCategory(id, existingCategory);  // Save updates
     return ResponseEntity.ok(existingCategory);  // Return updated category
 }
     

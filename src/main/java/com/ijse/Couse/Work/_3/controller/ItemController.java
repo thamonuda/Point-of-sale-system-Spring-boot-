@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  * categories and stocks.
  */
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/items")
 public class ItemController {
     
@@ -146,6 +148,7 @@ public class ItemController {
         // Retrieve the existing item and stock
         Items exitingItem = itemService.getItemsById(id);
         Stock exitingStock = stockService.getStockByItemId(id);
+        System.out.println(exitingStock.getFormattedQuantity());
     
         // Check if the item exists
         if (exitingItem == null) {

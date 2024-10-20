@@ -18,7 +18,6 @@ import lombok.Setter;
 public class Stock {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockId;
 
     private double quantity;
