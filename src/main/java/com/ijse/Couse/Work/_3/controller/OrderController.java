@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * It handles HTTP requests related to creating and retrieving orders.
  */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class OrderController {
 
     @Autowired
